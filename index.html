@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronHill Scroll Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="cursor"></div>
+
+    <section class="hero">
+        <div class="hero-img">
+            <img src="/images/hero-img.png" alt="img">
+        </div>
+
+        <div class="hero-header">
+            <h1>Morphogenesis</h1>
+            <p>Solid From gives way to liquid movement.</p>
+        </div>
+
+        <div class="circular-text" id="circularText">
+            OCTOBER COVER STORY • OCTOBER COVER STORY •
+        </div>
+
+        <canvas class="hero-canvas"></canvas>
+
+        <div class="hero-content">
+            <h2>
+                An underlying field of motion pushed and pulls the image across its surface, redistributing pixels in a
+                way that feels organic and constantly in flux.
+            </h2>
+        </div>
+    </section>
+
+    <section>
+        <div class="divider divider-top">
+            <svg viewBox="0 0 1000 140" preserveAspectRatio="none">
+                <path
+                    d="M0,70 C100,20 200,120 300,70 C400,20 500,120 600,70 C700,20 800,120 900,70 C950,90 1000,60 1000,70"
+                    fill="none" stroke="currentColor" stroke-width="4.2" />
+            </svg>
+        </div>
+    </section>
+
+    <section class="spotlight">
+        <div class="spotlight-header">
+            <h1>Time stretches differently inside this frame.</h1>
+        </div>
+
+        <div class="spotlight-images">
+            <div class="spotlight-img">
+                <img src="/images/img_1.png" alt="img_1">
+            </div>
+            <div class="spotlight-img">
+                <img src="/images/img_2.png" alt="img_2">
+            </div>
+            <div class="spotlight-img">
+                <img src="/images/img_3.png" alt="img_3">
+            </div>
+            <div class="spotlight-img">
+                <img src="/images/img_4.png" alt="img_4">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="divider divider-bottom">
+            <svg viewBox="0 0 1000 140" preserveAspectRatio="none">
+                <path
+                    d="M0,70 C100,20 200,120 300,70 C400,20 500,120 600,70 C700,20 800,120 900,70 C950,90 1000,60 1000,70"
+                    fill="none" stroke="currentColor" stroke-width="4.2" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- The About/Editorial Section -->
+    <section class="about">
+        <div class="ed-container">
+
+            <!-- TOP LABEL -->
+            <div class="ed-topbar">
+                <span class="ed-topbar-tag">Editorial</span>
+                <div class="ed-topbar-line"></div>
+                <span class="ed-topbar-issue">Morphogenesis — October Edition</span>
+            </div>
+
+            <!-- MAIN LAYOUT: headline left, content right -->
+            <div class="ed-main-grid">
+
+                <!-- LEFT: Big headline + stat -->
+                <div class="ed-left">
+                    <h1 class="ed-headline">
+                        What you do <em>today</em> defines who you become <em>tomorrow.</em>
+                    </h1>
+                    <p class="ed-tagline">Time never stops, and neither should you.</p>
+                    <div class="ed-gold-bar"></div>
+
+                    <div class="ed-stat-block">
+                        <span class="ed-stat-num">73<span class="ed-stat-pct">%</span></span>
+                        <span class="ed-stat-desc">of lasting change begins<br>with one daily act</span>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Body content -->
+                <div class="ed-right">
+                    <p class="ed-deck">
+                        The architecture of the self is built in silence — through daily acts of devotion, through small
+                        choices repeated until they become character.
+                    </p>
+
+                    <div class="ed-body-text">
+                        <p>Morphogenesis is not merely biological. It is the quiet law governing all transformation.
+                            Form does not emerge from grand gestures — it crystallises from habit, from repetition, from
+                            the invisible accumulation of choice upon choice.</p>
+                        <p>We live in an age that worships the dramatic. The overnight revelation. The sudden pivot. But
+                            the body — and the self — knows better. Real change is glacial, noticed only in retrospect.
+                        </p>
+                        <p>Stay consistent. Eliminate the noise that masquerades as urgency. Small efforts, repeated
+                            with devotion, produce results that feel like miracles to those who never witnessed the
+                            patient work behind them.</p>
+                    </div>
+
+                    <blockquote class="ed-blockquote">
+                        "Every form that endures was once a shape that refused to dissolve."
+                    </blockquote>
+
+                    <div class="ed-meta-row">
+                        <div class="ed-tags">
+                            <span class="ed-tag">Identity</span>
+                            <span class="ed-tag">Form</span>
+                            <span class="ed-tag">Growth</span>
+                            <span class="ed-tag">Ritual</span>
+                        </div>
+                        <span class="ed-author">Morphogenesis Review</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BOTTOM TEASERS -->
+            <div class="ed-teasers">
+                <div class="ed-teaser">
+                    <span class="ed-teaser-label">Next Feature</span>
+                    <span class="ed-teaser-title">Stillness as a Form of Motion →</span>
+                </div>
+                <div class="ed-teaser-divider"></div>
+                <div class="ed-teaser">
+                    <span class="ed-teaser-label">Photography</span>
+                    <span class="ed-teaser-title">The Face as Landscape — A Portfolio →</span>
+                </div>
+                <div class="ed-teaser-divider"></div>
+                <div class="ed-teaser">
+                    <span class="ed-teaser-label">Essay</span>
+                    <span class="ed-teaser-title">What the Body Remembers That the Mind Forgets →</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- <svg width="751" height="202" viewBox="0 0 751 202" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5.00134 159.559C156.785 208.36 82.599 9.35289 252.501 5.0586C422.404 0.764303 638.002 234.059 495.001 191.059C352.001 148.058 585.501 40.5585 745.501 5.0586" stroke="black" stroke-width="10" stroke-linecap="round"/>
+    </svg> -->
+
+    <!-- Horizontal Scroll Section -->
+    <div class="horizontal-wrapper">
+        <div class="panel">
+            <div class="panel-content">
+                <h1>Time is always moving.</h1>
+                <p class="line">
+                    — It doesn’t pause. It doesn’t wait for the perfect moment.
+                    Every second slips forward, whether you act or stay still.
+                </p>
+                <p class="line highlight">
+                    The question is not whether time is passing
+                    but how consciously you are using it.
+                </p>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-content">
+                <h1>You are always choosing.</h1>
+
+                <p class="line">
+                    — Every moment presents a decision to move forward or fall behind.
+                    Even hesitation is a choice that shapes your direction.
+                </p>
+
+                <p class="line highlight">
+                    The habits you repeat daily quietly define your future,
+                    long before results ever appear.
+                </p>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-content">
+                <h1>Small steps create momentum.</h1>
+
+                <p class="line">
+                    — You don’t need massive changes to begin just consistent effort.
+                    Progress builds through actions repeated over time.
+                </p>
+
+                <p class="line highlight">
+                    Focus on improving a little every day,
+                    and let discipline do the rest.
+                </p>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-content">
+                <h1>Build a future you respect.</h1>
+
+                <p class="line">
+                    — Time invested with purpose turns into growth, skill, and confidence.
+                    The results you seek are created in the moments you choose to act.
+                </p>
+
+                <p class="line highlight">
+                    Start now, stay consistent, and let your actions
+                    shape a life you’re proud of.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Blank Filler Section -->
+    <div class="spacer"></div>
+
+    <section class="phone-section">
+
+        <!-- Parent background (beige) -->
+        <div class="base">
+            <h1>PUT YOUR PHONE DOWN</h1>
+        </div>
+
+        <!-- Expanding purple circle -->
+        <div class="reveal">
+            <h1>PUT YOUR PHONE DOWN</h1>
+        </div>
+
+    </section>
+
+    <div class="spacer"></div>
+
+    <!-- Talent Reveal Section -->
+    <section class="talent-section">
+        <!-- Bottom layer: SVG with TALENT text -->
+        <div class="talent-bg">
+            <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="#0f0f0f" />
+                <text x="50%" y="10%" text-anchor="middle" dominant-baseline="central"
+                    font-family="'Instrument Serif', serif" font-size="200" fill="#ebf5df" letter-spacing="0"
+                    font-weight="400">DID YOU FIND YOUR</text>
+                <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
+                    font-family="'Instrument Serif', serif" font-size="320" fill="#ebf5df" letter-spacing="40"
+                    font-weight="400">TALENT</text>
+            </svg>
+        </div>
+
+        <!-- Top layer: Solid overlay (clip-path will cut a hole here) -->
+        <div class="talent-overlay">
+            <h1 style="
+            font-size: 10rem;
+            font-weight: 700;
+            font-family: 'Instrument Serif', serif;
+            text-align: center;
+        ">FIND YOUR</h1>
+        </div>
+    </section>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
