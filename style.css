@@ -471,16 +471,28 @@ p {
 /* Horizontal Scroll */
 .horizontal-wrapper {
   display: flex;
-  width: 400%;
-  /* 4 panels = 4x width */
+  width: 600%;
+  text-align: center;
+  /* 6 panels = 6x width */
   height: 100vh;
   scroll-snap-type: x mandatory;
-  /* Smooth snapping for better UX */
   overflow-x: scroll;
   scroll-behavior: smooth;
 }
 
-.panel {
+.horizontal-wrapper-reverse {
+  display: flex;
+  width: 600%;
+  text-align: center;
+  /* 6 panels = 6x width */
+  height: 100vh;
+  scroll-snap-type: x mandatory;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.panel,
+.panel-reverse {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -490,13 +502,67 @@ p {
   font-size: 50px;
   font-weight: bold;
   scroll-snap-align: start;
-  /* Snap alignment for each panel */
   padding: 2rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
 }
 
-.panel p {
-  font-size: 1.5rem;
+/* Law number badge */
+.law-number {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(5rem, 10vw, 12rem);
+  font-weight: 400;
+  color: #0000000f;
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.svg-icon {
+  left: 0;
+  /* Changed from -50% to prevent overflow */
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  /* Prevents scroll interception */
+}
+
+.svg-icon svg {
+  width: clamp(25rem, 40vw, 100rem);
+  height: auto;
+  opacity: 0.8;
+}
+
+.panel-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel-content h1 {
+  font-size: clamp(2rem, 6vw, 5rem);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.panel p,
+.panel-reverse p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: 400;
   line-height: 1.8;
   text-align: center;
@@ -504,30 +570,90 @@ p {
   color: #333;
 }
 
-.panel img {
+.panel img,
+.panel-reverse img {
   max-width: 80%;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Panel gradients — Laws 1-6 (warm, earthy palette) */
 .panel:nth-child(1) {
-  background: linear-gradient(135deg, #ebf5df, #c8d7c1);
+  background: linear-gradient(135deg, #ebf5df, #d4e4c8);
 }
 
 .panel:nth-child(2) {
-  background: linear-gradient(135deg, #dcdcd0, #bfcab3);
+  background: linear-gradient(135deg, #e2ebd2, #c8d7b6);
 }
 
 .panel:nth-child(3) {
-  background: linear-gradient(135deg, #d2dcc6, #aebfa5);
+  background: linear-gradient(135deg, #d8e1c6, #bccba8);
 }
 
 .panel:nth-child(4) {
-  background: linear-gradient(135deg, #c8d7c1, #9fb89a);
+  background: linear-gradient(135deg, #ced8ba, #b0bf9a);
 }
 
+.panel:nth-child(5) {
+  background: linear-gradient(135deg, #c4ceae, #a4b38c);
+}
 
+.panel:nth-child(6) {
+  background: linear-gradient(135deg, #bac5a2, #98a77e);
+}
+
+/* Panel gradients — Laws 7-12 (deeper, twilight palette) */
+.panel-reverse:nth-child(1) {
+  background: linear-gradient(135deg, #2a2a3d, #3d3d5c);
+  color: var(--base-100);
+}
+
+.panel-reverse:nth-child(2) {
+  background: linear-gradient(135deg, #252538, #363654);
+  color: var(--base-100);
+}
+
+.panel-reverse:nth-child(3) {
+  background: linear-gradient(135deg, #202033, #2f2f4c);
+  color: var(--base-100);
+}
+
+.panel-reverse:nth-child(4) {
+  background: linear-gradient(135deg, #1b1b2e, #282844);
+  color: var(--base-100);
+}
+
+.panel-reverse:nth-child(5) {
+  background: linear-gradient(135deg, #161629, #21213c);
+  color: var(--base-100);
+}
+
+.panel-reverse:nth-child(6) {
+  background: linear-gradient(135deg, #111124, #1a1a34);
+  color: var(--base-100);
+}
+
+.panel-reverse p {
+  color: rgba(235, 245, 223, 0.7);
+}
+
+.panel-reverse .line.highlight {
+  color: var(--base-200);
+}
+
+.panel-reverse .law-number {
+  color: rgba(254, 200, 29, 0.08);
+}
+
+.horizontal-wrapper>svg,
+.horizontal-wrapper-reverse>svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  fill: transparent;
+}
 
 /* Temporary Animation Code Here */
 .spacer {
@@ -546,8 +672,6 @@ p {
   position: absolute;
   inset: 0;
   background: #ebd7c0;
-  /* beige */
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -558,11 +682,9 @@ p {
   position: absolute;
   inset: 0;
   background: purple;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   clip-path: circle(0% at 50% 50%);
 }
 
@@ -582,15 +704,6 @@ p {
 
 .reveal h1 {
   color: white;
-}
-
-.horizontal-wrapper svg {
-  position: absolute;
-  background-color: red;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  fill: transparent;
 }
 
 @keyframes spin {
@@ -675,36 +788,86 @@ p {
   }
 }
 
+/* ===== TABLET / MOBILE STACK (≤ 768px) ===== */
+@media (max-width: 768px) {
+  .horizontal-wrapper,
+  .horizontal-wrapper-reverse {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .panel,
+  .panel-reverse {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding: 3rem 2rem; /* Reduced top/bottom padding */
+  }
+
+
+
+  .law-number {
+    font-size: clamp(4rem, 15vw, 8rem);
+    top: -5rem;
+    left: -1rem;
+  }
+}
+
 /* ===== MOBILE (≤ 480px) ===== */
 @media (max-width: 480px) {
   .hero {
-    height: 170svh;
+    height: 150svh; /* Keep desktop height proportion */
   }
 
   .hero-img img {
-    object-position: 60% top;
+    object-position: 60% center;
   }
 
   .hero-header {
     gap: 1rem;
     padding: 0 20px;
+    height: 90svh; /* Slightly adjust to prevent overlap */
+  }
+
+  .hero-header h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem); /* Scale down for mobile */
   }
 
   .hero-header p {
     width: 95%;
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .circular-text {
-    bottom: 62svh;
-    right: 12px;
-    width: 30%;
-    height: 30%;
+    bottom: 40%;
+    right: 5%;
+    width: 120px; /* Use fixed px or vw to maintain perfect circle */
+    height: 120px;
+  }
+
+  .circular-text span {
+    font-size: 9px; /* Make text smaller to fit the smaller circle */
+  }
+
+  .spotlight-img {
+    width: 45vw; /* Make images smaller so they don't fly off-screen */
+  }
+
+  .spotlight-header h1 {
+    font-size: clamp(2rem, 8vw, 3rem); /* Make the text fit better between the images */
+    padding: 0 1rem;
+  }
+
+  .hero-content {
+    height: 50svh; /* Adjust content area */
   }
 
   .hero-content h2 {
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: clamp(1.8rem, 8vw, 2.5rem); /* Increased size for better readability */
+    line-height: 1.1; /* Adjusted line-height to fit the large serif font nicely */
+    width: 95%; /* Give it a bit more width on small screens */
   }
 }
 

@@ -403,32 +403,60 @@ const spotlightImgFinalPos = [
 }
 
 
-/* Horizontal Scroll */
-{
-    let sections = gsap.utils.toArray(".panel");
+let mm = gsap.matchMedia();
 
-    gsap.to(sections, {
-        xPercent: -100 * (sections.length - 1),
-        ease: "none",
+mm.add("(min-width: 769px)", () => {
+    /* Horizontal Scroll — Laws 1-6 (Left to Right) */
+    {
+        let sections = gsap.utils.toArray(".panel");
+
+        gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".horizontal-wrapper",
+                pin: true,
+                scrub: 1,
+                end: () => "+=" + document.querySelector(".horizontal-wrapper").offsetWidth,
+            }
+        });
+    }
+
+    /* Horizontal Scroll — Laws 7-12 (Right to Left) */
+    {
+        let reverseSections = gsap.utils.toArray(".panel-reverse");
+        let reverseWrapper = document.querySelector(".horizontal-wrapper-reverse");
+
+        // Set the initial position of the panels so the LAST panel is visible first
+        gsap.set(reverseSections, { xPercent: -100 * (reverseSections.length - 1) });
+
+        // Animate the panels, NOT the pinned wrapper!
+        gsap.to(reverseSections, {
+            xPercent: 0,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".horizontal-wrapper-reverse",
+                pin: true,
+                scrub: 1,
+                end: () => "+=" + reverseWrapper.offsetWidth,
+            }
+        });
+    }
+});
+
+
+mm.add("all", () => {
+    gsap.to(".reveal", {
+        clipPath: "circle(150% at 50% 50%)",
+
         scrollTrigger: {
-            trigger: ".horizontal-wrapper",
-            pin: true,
+            trigger: ".phone-section",
+            start: "top top",
+            end: "+=1500",       // length of animation
             scrub: 1,
-            end: () => "+=" + document.querySelector(".horizontal-wrapper").offsetWidth,
+            pin: true
         }
     });
-}
-
-gsap.to(".reveal", {
-    clipPath: "circle(150% at 50% 50%)",
-
-    scrollTrigger: {
-        trigger: ".phone-section",
-        start: "top top",
-        end: "+=1500",       // length of animation
-        scrub: 1,
-        pin: true
-    }
 });
 
 // ====== Talent Reveal (Cursor-following circle) ===========
