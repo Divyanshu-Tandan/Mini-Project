@@ -790,6 +790,7 @@ p {
 
 /* ===== TABLET / MOBILE STACK (≤ 768px) ===== */
 @media (max-width: 768px) {
+
   .horizontal-wrapper,
   .horizontal-wrapper-reverse {
     width: 100%;
@@ -803,7 +804,8 @@ p {
     width: 100%;
     height: auto;
     min-height: 100vh;
-    padding: 3rem 2rem; /* Reduced top/bottom padding */
+    padding: 3rem 2rem;
+    /* Reduced top/bottom padding */
   }
 
 
@@ -818,7 +820,8 @@ p {
 /* ===== MOBILE (≤ 480px) ===== */
 @media (max-width: 480px) {
   .hero {
-    height: 150svh; /* Keep desktop height proportion */
+    height: 150svh;
+    /* Keep desktop height proportion */
   }
 
   .hero-img img {
@@ -828,11 +831,13 @@ p {
   .hero-header {
     gap: 1rem;
     padding: 0 20px;
-    height: 90svh; /* Slightly adjust to prevent overlap */
+    height: 90svh;
+    /* Slightly adjust to prevent overlap */
   }
 
   .hero-header h1 {
-    font-size: clamp(2.5rem, 12vw, 4rem); /* Scale down for mobile */
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    /* Scale down for mobile */
   }
 
   .hero-header p {
@@ -843,31 +848,39 @@ p {
   .circular-text {
     bottom: 40%;
     right: 5%;
-    width: 120px; /* Use fixed px or vw to maintain perfect circle */
+    width: 120px;
+    /* Use fixed px or vw to maintain perfect circle */
     height: 120px;
   }
 
   .circular-text span {
-    font-size: 9px; /* Make text smaller to fit the smaller circle */
+    font-size: 9px;
+    /* Make text smaller to fit the smaller circle */
   }
 
   .spotlight-img {
-    width: 45vw; /* Make images smaller so they don't fly off-screen */
+    width: 45vw;
+    /* Make images smaller so they don't fly off-screen */
   }
 
   .spotlight-header h1 {
-    font-size: clamp(2rem, 8vw, 3rem); /* Make the text fit better between the images */
+    font-size: clamp(2rem, 8vw, 3rem);
+    /* Make the text fit better between the images */
     padding: 0 1rem;
   }
 
   .hero-content {
-    height: 50svh; /* Adjust content area */
+    height: 50svh;
+    /* Adjust content area */
   }
 
   .hero-content h2 {
-    font-size: clamp(1.8rem, 8vw, 2.5rem); /* Increased size for better readability */
-    line-height: 1.1; /* Adjusted line-height to fit the large serif font nicely */
-    width: 95%; /* Give it a bit more width on small screens */
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    /* Increased size for better readability */
+    line-height: 1.1;
+    /* Adjusted line-height to fit the large serif font nicely */
+    width: 95%;
+    /* Give it a bit more width on small screens */
   }
 }
 
@@ -877,7 +890,6 @@ p {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  cursor: none;
 }
 
 .talent-overlay {

@@ -447,12 +447,12 @@ mm.add("(min-width: 769px)", () => {
 
 mm.add("all", () => {
     gsap.to(".reveal", {
-        clipPath: "circle(150% at 50% 50%)",
+        clipPath: "circle(100% at 50% 50%)",
 
         scrollTrigger: {
             trigger: ".phone-section",
             start: "top top",
-            end: "+=1500",       // length of animation
+            end: "+=600",       // length of animation
             scrub: 1,
             pin: true
         }
