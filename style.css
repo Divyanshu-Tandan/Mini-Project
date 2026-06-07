@@ -491,7 +491,24 @@ p {
   scroll-behavior: smooth;
 }
 
-.panel,
+.panel {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: bold;
+  scroll-snap-align: start;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  background-color: var(--base-100);
+  color: var(--base-300);
+}
+
 .panel-reverse {
   width: 100vw;
   height: 100vh;
@@ -506,6 +523,8 @@ p {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
+  background-color: var(--base-300);
+  color: var(--base-100);
 }
 
 /* Law number badge */
@@ -560,14 +579,22 @@ p {
   margin-bottom: 1rem;
 }
 
-.panel p,
+.panel p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.8;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: rgba(15, 15, 15, 0.8);
+}
+
 .panel-reverse p {
   font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: 400;
   line-height: 1.8;
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #333;
+  color: rgba(235, 245, 223, 0.7);
 }
 
 .panel img,
@@ -578,65 +605,7 @@ p {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Panel gradients — Laws 1-6 (warm, earthy palette) */
-.panel:nth-child(1) {
-  background: linear-gradient(135deg, #ebf5df, #d4e4c8);
-}
 
-.panel:nth-child(2) {
-  background: linear-gradient(135deg, #e2ebd2, #c8d7b6);
-}
-
-.panel:nth-child(3) {
-  background: linear-gradient(135deg, #d8e1c6, #bccba8);
-}
-
-.panel:nth-child(4) {
-  background: linear-gradient(135deg, #ced8ba, #b0bf9a);
-}
-
-.panel:nth-child(5) {
-  background: linear-gradient(135deg, #c4ceae, #a4b38c);
-}
-
-.panel:nth-child(6) {
-  background: linear-gradient(135deg, #bac5a2, #98a77e);
-}
-
-/* Panel gradients — Laws 7-12 (deeper, twilight palette) */
-.panel-reverse:nth-child(1) {
-  background: linear-gradient(135deg, #2a2a3d, #3d3d5c);
-  color: var(--base-100);
-}
-
-.panel-reverse:nth-child(2) {
-  background: linear-gradient(135deg, #252538, #363654);
-  color: var(--base-100);
-}
-
-.panel-reverse:nth-child(3) {
-  background: linear-gradient(135deg, #202033, #2f2f4c);
-  color: var(--base-100);
-}
-
-.panel-reverse:nth-child(4) {
-  background: linear-gradient(135deg, #1b1b2e, #282844);
-  color: var(--base-100);
-}
-
-.panel-reverse:nth-child(5) {
-  background: linear-gradient(135deg, #161629, #21213c);
-  color: var(--base-100);
-}
-
-.panel-reverse:nth-child(6) {
-  background: linear-gradient(135deg, #111124, #1a1a34);
-  color: var(--base-100);
-}
-
-.panel-reverse p {
-  color: rgba(235, 245, 223, 0.7);
-}
 
 .panel-reverse .line.highlight {
   color: var(--base-200);
@@ -671,7 +640,7 @@ p {
 .base {
   position: absolute;
   inset: 0;
-  background: #ebd7c0;
+  background: var(--base-100);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -681,7 +650,7 @@ p {
 .reveal {
   position: absolute;
   inset: 0;
-  background: purple;
+  background: var(--base-300);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -699,11 +668,11 @@ p {
 
 /* Different colors */
 .base h1 {
-  color: #0f0f0f;
+  color: var(--base-300);
 }
 
 .reveal h1 {
-  color: white;
+  color: var(--base-100);
 }
 
 @keyframes spin {
@@ -724,6 +693,47 @@ p {
   100% {
     background-position: 200% 0;
   }
+}
+
+/* ======== Marquee Spacer ======== */
+.marquee-spacer {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--base-100);
+  color: var(--base-300);
+  overflow: hidden;
+  padding: 5vh 0;
+}
+
+.marquee-row {
+  white-space: nowrap;
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(4rem, 8vw, 8rem);
+  text-transform: uppercase;
+  line-height: 1.1;
+  will-change: transform;
+}
+
+
+
+/* ======== Typing Quote Spacer ======== */
+.typing-spacer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--base-300);
+  padding: 0 5vw;
+}
+
+.typing-quote {
+  font-size: clamp(3rem, 7vw, 7rem);
+  color: var(--base-100);
+  text-align: center;
+  line-height: 1.2;
+  max-width: 1400px;
 }
 
 @media (max-width: 1000px) {
@@ -803,9 +813,16 @@ p {
   .panel-reverse {
     width: 100%;
     height: auto;
-    min-height: 100vh;
-    padding: 3rem 2rem;
-    /* Reduced top/bottom padding */
+    min-height: auto;
+    padding: 6rem 2rem;
+  }
+
+  .panel {
+    border-bottom: 1px solid rgba(15, 15, 15, 0.1);
+  }
+
+  .panel-reverse {
+    border-bottom: 1px solid rgba(235, 245, 223, 0.1);
   }
 
 
@@ -897,6 +914,19 @@ p {
   inset: 0;
   background: #ebf5df;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.talent-overlay-text {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(4rem, 15vw, 15rem);
+  font-weight: 700;
+  color: #0f0f0f;
+  text-align: center;
+  line-height: 1;
+  margin: 0;
 }
 
 .talent-bg {
@@ -904,10 +934,31 @@ p {
   inset: 0;
   z-index: 2;
   clip-path: circle(0% at 50% 50%);
+  background-color: #0f0f0f;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.talent-bg svg {
-  width: 100%;
-  height: 100%;
-  display: block;
+.talent-bg-top {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 5vw, 6rem);
+  color: #ebf5df;
+  font-weight: 400;
+  position: absolute;
+  top: 15%;
+  text-align: center;
+  margin: 0;
+}
+
+.talent-bg-main {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(4rem, 18vw, 18rem);
+  color: #ebf5df;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 1;
+  margin: 0;
 }

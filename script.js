@@ -36,9 +36,10 @@ ScrollTrigger.scrollerProxy(document.body, {
 });
 
 
+const cursor = document.querySelector(".cursor");
+
 // Throttle Cursor Animation
 {
-    const cursor = document.querySelector(".cursor");
     let lastTime = 0;
     window.addEventListener("mousemove", (e) => {
         const now = performance.now();
@@ -347,60 +348,7 @@ const spotlightImgFinalPos = [
     );
 }
 
-// Small Dot Animation
-{
-    gsap.fromTo(
-        ".micro-signal",
-        {
-            scale: 0.1,
-            opacity: 0.6
-        },
-        {
-            scale: 2.5,
-            opacity: 0,
-            duration: 2.5,
-            ease: "sine.inOut",
-            repeat: -1,
-            repeatDelay: 0.4
-        }
-    );
-}
 
-{
-    // gsap.to('.about', {
-    //     // backgroundColor: `#ebf5df`,
-    //     backgroundColor: `#0f0f0f`,
-    //     // color: '#0f0f0f',
-    //     color: '#ebf5df',
-    //     scrollTrigger: {
-    //         trigger: ".about",
-    //         start: 'top center',
-    //         end: 'bottom 100%',
-    //         scrub: 1,
-    //     }
-    // })
-
-    gsap.from(".main", {
-        scale: 0.9,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-            trigger: ".newspaper",
-            start: "top 70%"
-        }
-    });
-
-    gsap.from(".skeleton", {
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        scrollTrigger: {
-            trigger: ".newspaper",
-            start: "top 80%"
-        }
-    });
-}
 
 
 let mm = gsap.matchMedia();
@@ -497,3 +445,68 @@ mm.add("all", () => {
         });
     }
 }
+
+// ====== Kinetic Marquee Spacer ======
+{
+    gsap.set(".marquee-left", { xPercent: -10 });
+    gsap.to(".marquee-left", {
+        xPercent: -30,
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".marquee-spacer",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+        }
+    });
+
+    gsap.set(".marquee-right", { xPercent: -30 });
+    gsap.to(".marquee-right", {
+        xPercent: -10,
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".marquee-spacer",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+        }
+    });
+}
+
+
+
+// ====== Typing Quote Spacer ======
+{
+    const quote = document.querySelector(".typing-quote");
+    if (quote) {
+        const splitQuote = new SplitText(quote, { type: "words, chars" });
+        gsap.set(splitQuote.chars, { opacity: 0.1 });
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".typing-spacer",
+                start: "top top",
+                end: "+=150%",
+                pin: true,
+                scrub: 1,
+            }
+        });
+
+        tl.to(splitQuote.chars, {
+            opacity: 1,
+            stagger: 0.1,
+            ease: "none"
+        });
+
+        tl.to(splitQuote.chars, {
+            opacity: 0,
+            filter: "blur(10px)",
+            stagger: 0.02
+        }, "+=0.5");
+    }
+}
+
+// Ensure Lenis and GSAP are fully synced after everything loads
+window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+});
