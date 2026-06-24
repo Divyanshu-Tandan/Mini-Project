@@ -696,7 +696,7 @@ p {
 }
 
 /* ======== Marquee Spacer ======== */
-.marquee-spacer {
+/* .marquee-spacer {
   height: 50vh;
   display: flex;
   flex-direction: column;
@@ -714,7 +714,7 @@ p {
   text-transform: uppercase;
   line-height: 1.1;
   will-change: transform;
-}
+} */
 
 
 

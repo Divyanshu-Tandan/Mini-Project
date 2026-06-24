@@ -447,31 +447,31 @@ mm.add("all", () => {
 }
 
 // ====== Kinetic Marquee Spacer ======
-{
-    gsap.set(".marquee-left", { xPercent: -10 });
-    gsap.to(".marquee-left", {
-        xPercent: -30,
-        ease: "none",
-        scrollTrigger: {
-            trigger: ".marquee-spacer",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true
-        }
-    });
+// {
+//     gsap.set(".marquee-left", { xPercent: -10 });
+//     gsap.to(".marquee-left", {
+//         xPercent: -30,
+//         ease: "none",
+//         scrollTrigger: {
+//             trigger: ".marquee-spacer",
+//             start: "top bottom",
+//             end: "bottom top",
+//             scrub: true
+//         }
+//     });
 
-    gsap.set(".marquee-right", { xPercent: -30 });
-    gsap.to(".marquee-right", {
-        xPercent: -10,
-        ease: "none",
-        scrollTrigger: {
-            trigger: ".marquee-spacer",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true
-        }
-    });
-}
+//     gsap.set(".marquee-right", { xPercent: -30 });
+//     gsap.to(".marquee-right", {
+//         xPercent: -10,
+//         ease: "none",
+//         scrollTrigger: {
+//             trigger: ".marquee-spacer",
+//             start: "top bottom",
+//             end: "bottom top",
+//             scrub: true
+//         }
+//     });
+// }
 
 
 
